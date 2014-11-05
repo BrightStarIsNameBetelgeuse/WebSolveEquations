@@ -1,0 +1,45 @@
+﻿@model TestEquatMvc.Models.ContextSolveStrategy
+
+@{
+    ViewBag.Title = "Index";
+}
+
+@section Scripts
+{
+  <script src="@Url.Content("~/Scripts/JS.js")"></script>
+}
+<h2>Index</h2>
+<div>
+    
+    @using (Html.BeginForm())
+    {
+        <form action="/Views/Home/Index.cshtml" method="post">
+            
+            <input id="names1" name="names" type="text" value="" maxlength="2" />
+            x1 + 
+            <input id="names2" name="names" type="text" value="" maxlength="2" />
+            x2 = 
+            <input id="names3" name="names" type="text" value="" maxlength="2" />
+            <br/>
+            <input id="names4" name="names" type="text" value="" maxlength="2" />
+            x1 + 
+            <input id="names5" name="names" type="text" value="" maxlength="2" />    
+            x2 = 
+            <input id="names6" name="names" type="text" value="" maxlength="2" />
+            <br/>
+            <br/>
+
+            <br/>
+            <button type="submit" name="action" value="Cramer's method">Cramer's method</button>
+            <button type="submit" name="action" value="Gauss's method">Gauss's method</button>
+        </form>
+                
+    }
+    
+    <!--Title: <input type="text" id="item_title" /><br /><br />
+    Description: <input type="text" id="item_desc" /><br />
+    <input type="button" onclick="AddItem()" value="Add" />
+    <div id="items_list">
+    </div>-->
+
+</div>
