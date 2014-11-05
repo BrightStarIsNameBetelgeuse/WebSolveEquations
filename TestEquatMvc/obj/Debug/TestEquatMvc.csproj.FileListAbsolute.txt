@@ -121,3 +121,44 @@ C:\Users\rodki143\Documents\Visual Studio 2012\Projects\TestEquatMvc\TestEquatMv
 C:\Users\rodki143\Documents\Visual Studio 2012\Projects\TestEquatMvc\TestEquatMvc\obj\Debug\TestEquatMvc.csprojResolveAssemblyReference.cache
 C:\Users\rodki143\Documents\Visual Studio 2012\Projects\TestEquatMvc\TestEquatMvc\obj\Debug\TestEquatMvc.dll
 C:\Users\rodki143\Documents\Visual Studio 2012\Projects\TestEquatMvc\TestEquatMvc\obj\Debug\TestEquatMvc.pdb
+C:\Users\rodki143\Documents\gittest\TestEquatMvc\bin\TestEquatMvc.dll
+C:\Users\rodki143\Documents\gittest\TestEquatMvc\bin\TestEquatMvc.pdb
+C:\Users\rodki143\Documents\gittest\TestEquatMvc\bin\Antlr3.Runtime.dll
+C:\Users\rodki143\Documents\gittest\TestEquatMvc\bin\EntityFramework.dll
+C:\Users\rodki143\Documents\gittest\TestEquatMvc\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\rodki143\Documents\gittest\TestEquatMvc\bin\Newtonsoft.Json.dll
+C:\Users\rodki143\Documents\gittest\TestEquatMvc\bin\System.Net.Http.Formatting.dll
+C:\Users\rodki143\Documents\gittest\TestEquatMvc\bin\System.Web.Http.dll
+C:\Users\rodki143\Documents\gittest\TestEquatMvc\bin\System.Web.Http.WebHost.dll
+C:\Users\rodki143\Documents\gittest\TestEquatMvc\bin\System.Web.Mvc.dll
+C:\Users\rodki143\Documents\gittest\TestEquatMvc\bin\System.Web.Optimization.dll
+C:\Users\rodki143\Documents\gittest\TestEquatMvc\bin\System.Web.Providers.dll
+C:\Users\rodki143\Documents\gittest\TestEquatMvc\bin\System.Web.Razor.dll
+C:\Users\rodki143\Documents\gittest\TestEquatMvc\bin\System.Web.WebPages.Deployment.dll
+C:\Users\rodki143\Documents\gittest\TestEquatMvc\bin\System.Web.WebPages.dll
+C:\Users\rodki143\Documents\gittest\TestEquatMvc\bin\System.Web.WebPages.Razor.dll
+C:\Users\rodki143\Documents\gittest\TestEquatMvc\bin\WebGrease.dll
+C:\Users\rodki143\Documents\gittest\TestEquatMvc\bin\EntityFramework.xml
+C:\Users\rodki143\Documents\gittest\TestEquatMvc\bin\Newtonsoft.Json.xml
+C:\Users\rodki143\Documents\gittest\TestEquatMvc\bin\System.Net.Http.Formatting.xml
+C:\Users\rodki143\Documents\gittest\TestEquatMvc\bin\System.Web.Http.xml
+C:\Users\rodki143\Documents\gittest\TestEquatMvc\bin\System.Web.Http.WebHost.xml
+C:\Users\rodki143\Documents\gittest\TestEquatMvc\bin\System.Web.Mvc.xml
+C:\Users\rodki143\Documents\gittest\TestEquatMvc\bin\System.Web.Razor.xml
+C:\Users\rodki143\Documents\gittest\TestEquatMvc\bin\System.Web.WebPages.xml
+C:\Users\rodki143\Documents\gittest\TestEquatMvc\bin\System.Web.WebPages.Deployment.xml
+C:\Users\rodki143\Documents\gittest\TestEquatMvc\bin\System.Web.WebPages.Razor.xml
+C:\Users\rodki143\Documents\gittest\TestEquatMvc\bin\ru\EntityFramework.resources.dll
+C:\Users\rodki143\Documents\gittest\TestEquatMvc\bin\ru\System.Net.Http.Formatting.resources.dll
+C:\Users\rodki143\Documents\gittest\TestEquatMvc\bin\ru\System.Web.Http.resources.dll
+C:\Users\rodki143\Documents\gittest\TestEquatMvc\bin\ru\System.Web.Http.WebHost.resources.dll
+C:\Users\rodki143\Documents\gittest\TestEquatMvc\bin\ru\System.Web.Mvc.resources.dll
+C:\Users\rodki143\Documents\gittest\TestEquatMvc\bin\ru\System.Web.Optimization.resources.dll
+C:\Users\rodki143\Documents\gittest\TestEquatMvc\bin\ru\System.Web.Providers.resources.dll
+C:\Users\rodki143\Documents\gittest\TestEquatMvc\bin\ru\System.Web.Razor.resources.dll
+C:\Users\rodki143\Documents\gittest\TestEquatMvc\bin\ru\System.Web.WebPages.resources.dll
+C:\Users\rodki143\Documents\gittest\TestEquatMvc\bin\ru\System.Web.WebPages.Deployment.resources.dll
+C:\Users\rodki143\Documents\gittest\TestEquatMvc\bin\ru\System.Web.WebPages.Razor.resources.dll
+C:\Users\rodki143\Documents\gittest\TestEquatMvc\obj\Debug\TestEquatMvc.csprojResolveAssemblyReference.cache
+C:\Users\rodki143\Documents\gittest\TestEquatMvc\obj\Debug\TestEquatMvc.dll
+C:\Users\rodki143\Documents\gittest\TestEquatMvc\obj\Debug\TestEquatMvc.pdb

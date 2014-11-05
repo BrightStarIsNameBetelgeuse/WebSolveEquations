@@ -43,7 +43,7 @@ namespace TestEquatMvc.Controllers
         public ActionResult Index(List<string> names, string action)
         {
             ContextSolveStrategy contextSolveStrategy = new ContextSolveStrategy();
-            contextSolveStrategy.Dimension = 2;
+            contextSolveStrategy.Dimension = 3;
             int d = contextSolveStrategy.Dimension;
 
             double[,] matr = new double[d,d];
