@@ -8,7 +8,31 @@
     @Scripts.Render("~/bundles/modernizr")
 </head>
 <body>
-    @RenderBody()
+    <div id="main_container">
+        <div id="header">
+            
+        </div>
+        <div class="menu">
+        	    <ul>                                                                         
+        		    <li class="selected"><a href="#">home</a></li>
+                    <li><a href="#">about</a></li>
+                    <li><a href="#">demo</a></li>
+                    <li><a href="#">license</a></li>
+                    <li><a href="#">modules</a></li>
+                    <li><a href="#">themes</a></li>
+                    <li><a href="#">contact</a></li>
+        	    </ul>
+        </div>
+        <div class="center_content">
+                <div class="center_left">
+                    @RenderBody() 
+                </div>
+
+                <div class="clear"></div> 
+        </div>
+    </div>
+    
+    
 
     @Scripts.Render("~/bundles/jquery")
     @RenderSection("scripts", required: false)

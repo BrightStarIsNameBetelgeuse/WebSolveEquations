@@ -1,58 +1,30 @@
 ﻿@model TestEquatMvc.Models.ContextSolveStrategy
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Web Equations Solver";
 }
 
-@section Scripts
-{
-  <script src="@Url.Content("~/Scripts/JS.js")"></script>
-}
-<h2>Welcome to the Web Solver Equations!</h2>
+<div class="title"><span class="red">Welcome</span> to the Web Solver Equations</div>
 <h3>Please, fill the matrix equations</h3>
-<div>
-    
+
     @using (Html.BeginForm())
     {
-        <form action="/Views/Home/Index.cshtml" method="post">
+        <form id="equatsForm"  method="post" action="@Url.Action("AddComment")">
             
-            <input id="names1" name="names" type="text" value="" maxlength="2" />
-            x1 + 
-            <input id="names2" name="names" type="text" value="" maxlength="2" />
-            x2 + 
-            <input id="names3" name="names" type="text" value="" maxlength="2" />
-            x3 = 
-            <input id="names4" name="names" type="text" value="" maxlength="2" />
+            <input id="names1" name="names" type="text" value="" />
+            <br />
+            <input id="names2" name="names" type="text" value="" />
+            <br />
+            <input id="names3" name="names" type="text" value="" />
             <br/>
-            <input id="names5" name="names" type="text" value="" maxlength="2" />
-            x1 + 
-            <input id="names6" name="names" type="text" value="" maxlength="2" />
-            x2 + 
-            <input id="names7" name="names" type="text" value="" maxlength="2" />
-            x3 = 
-            <input id="names8" name="names" type="text" value="" maxlength="2" />
-            <br/>
-            <input id="names9" name="names" type="text" value="" maxlength="2" />
-            x1 + 
-            <input id="names10" name="names" type="text" value="" maxlength="2" />
-            x2 + 
-            <input id="names11" name="names" type="text" value="" maxlength="2" />
-            x3 = 
-            <input id="names12" name="names" type="text" value="" maxlength="2" />
-            <br/>
-            <br/>
-
-            <br/>
-            <button type="submit" name="action" value="Cramer's method">Cramer's method</button>
-            <button type="submit" name="action" value="Gauss's method">Gauss's method</button>
+            <button type="submit" name="action" class="cramerMethod" value="Cramer's method">Cramer's method</button>
+            <button type="submit" name="action" class="gaussMethod" value="Gauss's method">Gauss's method</button>
         </form>
                 
     }
-    
-    <!--Title: <input type="text" id="item_title" /><br /><br />
-    Description: <input type="text" id="item_desc" /><br />
-    <input type="button" onclick="AddItem()" value="Add" />
-    <div id="items_list">
-    </div>-->
 
-</div>
+    <div id="results">
+    
+      @Model.Result
+    
+    </div>
