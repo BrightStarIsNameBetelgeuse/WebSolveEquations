@@ -1,14 +1,28 @@
 ﻿body {
-    font-size: .85em;
-    font-family: "Segoe UI", Verdana, Helvetica, Sans-Serif;
-    color: #232323;
-    background-color: #fff;
+    background:url(../Images/bg.gif) repeat #000000;
+    padding:0; font-family:arial, sans-serif; font-size:12px;
+    margin:0px auto auto auto;
+    color:#36322b;
 }
 
 header, footer, nav, section {
     display: block;
 }
 
+#header{
+    width:821px;
+    height:135px;
+    margin:0px;
+    padding:0px;
+    background:url(../Images/header_bg.gif) no-repeat center top;
+}
+
+#main_container{
+    width:821px;
+    height:auto;
+    margin:auto;
+    padding:0px;
+}
 
 /* Styles for basic forms
 -----------------------------------------------------------*/
@@ -58,4 +72,79 @@ textarea {
 
 .validation-summary-valid {
     display: none;
+}
+
+h2 {
+    color:#fff;
+}
+
+.center_content{
+    width:821px;
+    height:auto;
+    clear:both;
+    padding:25px 0 30px 0;
+    background-color:#e9e5e2;
+}
+
+.clear{
+    clear:both;
+}
+
+.title {
+    width: auto;
+    padding: 0 0 0 35px;
+    font-size: 22px;
+    color: #24a4b3;
+    margin: 0 0 10px 25px;
+}
+
+.center_left {
+    width: 500px;
+    float: left;
+    padding: 10px 0 10px 10px;
+}
+
+span.red {
+    font-weight: bold;
+    color: #da5b23;
+}
+
+/*---------------- menu tab----------------------*/
+.menu{
+    width:821px;
+    height:42px;
+    margin:0px;
+    background:url(../Images/menu_bg.gif) no-repeat left;
+}
+.menu ul{
+    list-style:none;
+    padding:0 0 0 15px;
+    margin:0px;
+}
+.menu ul li{
+    display:inline;
+}
+.menu ul li a{
+    float:left;
+    height:42px;
+    border:none;
+    padding:0 15px 0 15px;
+    text-decoration:none;
+    color:#fff;
+    line-height:42px;
+    font-size:14px;
+}
+.menu ul li.selected a{
+    float:left;
+    height:42px;
+    border:none;
+    padding:0 15px 0 15px;
+    text-decoration:none;
+    color:#fff;
+    line-height:42px;
+    font-size:14px;
+    background:url(../Images/menu_bullet.gif) no-repeat bottom center;
+}
+.menu ul li a:hover{
+    background:url(../Images/menu_bullet.gif) no-repeat bottom center;
 }
