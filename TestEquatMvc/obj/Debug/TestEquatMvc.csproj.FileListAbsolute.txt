@@ -159,6 +159,6 @@ C:\Users\rodki143\Documents\gittest\TestEquatMvc\bin\ru\System.Web.Razor.resourc
 C:\Users\rodki143\Documents\gittest\TestEquatMvc\bin\ru\System.Web.WebPages.resources.dll
 C:\Users\rodki143\Documents\gittest\TestEquatMvc\bin\ru\System.Web.WebPages.Deployment.resources.dll
 C:\Users\rodki143\Documents\gittest\TestEquatMvc\bin\ru\System.Web.WebPages.Razor.resources.dll
-C:\Users\rodki143\Documents\gittest\TestEquatMvc\obj\Debug\TestEquatMvc.csprojResolveAssemblyReference.cache
 C:\Users\rodki143\Documents\gittest\TestEquatMvc\obj\Debug\TestEquatMvc.dll
 C:\Users\rodki143\Documents\gittest\TestEquatMvc\obj\Debug\TestEquatMvc.pdb
+C:\Users\rodki143\Documents\gittest\TestEquatMvc\obj\Debug\TestEquatMvc.csprojResolveAssemblyReference.cache

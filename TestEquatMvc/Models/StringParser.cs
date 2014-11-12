@@ -136,7 +136,6 @@ namespace TestEquatMvc.Models
 
             //парсинг
             int b, b1 = 0;  //b1 - переменная, которая хранит свободный член
-            int counter = 0;    //счетчик для сравнения
 
             //находим свободный член
             foreach (var v in list)
@@ -206,6 +205,17 @@ namespace TestEquatMvc.Models
                 }
             }
             return matrix;
+        }
+
+        public double[] GetVector()
+        {
+            int d = _strings.Length; //размерность матрицы
+            double[] b = new double[d];
+            for (int i = 0; i < d; i++)
+            {
+                b[i] = blist[i];
+            }
+            return b;
         }
     }
 

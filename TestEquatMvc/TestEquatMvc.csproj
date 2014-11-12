@@ -131,7 +131,7 @@
     <Compile Include="Models\GaussStrategy.cs" />
     <Compile Include="Models\ISolveStrategy.cs" />
     <Compile Include="Models\Matrix.cs" />
-    <Compile Include="Models\MultiButton.cs" />
+    <Compile Include="Models\StringParser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -192,6 +192,16 @@
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <None Include="Scripts\jquery-1.7.1.intellisense.js" />
+    <Content Include="Images\bg.gif" />
+    <Content Include="Images\bullet_list.gif" />
+    <Content Include="Images\checked.gif" />
+    <Content Include="Images\header_bg.gif" />
+    <Content Include="Images\login.gif" />
+    <Content Include="Images\menu_bg.gif" />
+    <Content Include="Images\menu_bullet.gif" />
+    <Content Include="Images\text_box.gif" />
+    <Content Include="Images\welcome_box.gif" />
+    <Content Include="Scripts\AjaxDemo.js" />
     <Content Include="Scripts\jquery-1.7.1.js" />
     <Content Include="Scripts\jquery-1.7.1.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
@@ -207,7 +217,6 @@
     <Content Include="Scripts\knockout-2.1.0.js" />
     <Content Include="Scripts\modernizr-2.5.3.js" />
     <Content Include="Scripts\_references.js" />
-    <Content Include="Scripts\JS.js" />
     <Content Include="Views\Home\Results.ascx" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
@@ -222,6 +231,7 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Home\Start.cshtml" />
+    <Content Include="Views\Home\Result.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

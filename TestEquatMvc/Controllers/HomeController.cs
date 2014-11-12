@@ -15,79 +15,52 @@ namespace TestEquatMvc.Controllers
         [HttpGet]
         public ActionResult Start()
         {
-            
             return View();
         }
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="dim">Введенная пользователем размерность, по умолчанию 2</param>
-        /// <returns></returns>
-        [HttpPost]
-        public ActionResult Start(string dim = "2")
-        {
-            ContextSolveStrategy contextSolveStrategy = new ContextSolveStrategy();
-            //if(dim. - 48)
-            contextSolveStrategy.Dimension = Int32.Parse(dim);
-            return View("Index", contextSolveStrategy);
-        }
+        
 
         [HttpGet]
-        public ActionResult Index()
+        public ActionResult Index(ContextSolveStrategy context)
         {
-            return View();
+            return View(context);
         }
 
         [HttpPost]
-        //[MultiButton(MatchFormKey = "action", MatchFormValue = "Gauss's method")]
-        public ActionResult Index(List<string> names, string action)
+        public ActionResult Index(string[] names, string action)
         {
             ContextSolveStrategy contextSolveStrategy = new ContextSolveStrategy();
             contextSolveStrategy.Dimension = 3;
+            StringParser sp = new StringParser(names);
             int d = contextSolveStrategy.Dimension;
-
+            
             double[,] matr = new double[d,d];
             double[] b = new double[d];
             ///проверка на корректность введенных данных
-            for (int i = 0; i < names.Count; i++)
+            for (int i = 0; i < names.Length; i++)
             {
                 if (names[i].Length == 0)
                 {
                     contextSolveStrategy.EmptyField = true;
                     break;
                 }   
-                char[] tmp = names[i].ToCharArray();
-                foreach (var ch in tmp)
-                {
-                    if (((ch - 48) < 0) || ((ch - 48) > 9))
-                    {
-                        contextSolveStrategy.CharField = true;
-                        break;
-                    }         
-                }
             }
 
             if (contextSolveStrategy.CharField || contextSolveStrategy.EmptyField)
             {
                 contextSolveStrategy.Result = "The fields contain empty or incorrect";
-                return View("Results", contextSolveStrategy);
-            }
-
-
-            ///заполнение матрицы
-            for (int i = 0; i < d; i++)
-            {
-                for (int j = 0; j < d; j++)
+                if (Request.IsAjaxRequest())
                 {
-                    matr[i, j] = Double.Parse(names[i * (d + 1) + j]);
+                    ViewBag.Comment = contextSolveStrategy.Result;
+                    return PartialView(contextSolveStrategy);
                 }
+                return RedirectToAction("Index", contextSolveStrategy);
             }
 
-            ///заполнение вектора
-            for (int i = 0; i < d; i++)
-            {
-                b[i] = Double.Parse(names[i * (d + 1) + d]);
-            }
+            sp.InitMatrixs();
+
+            matr = sp.GetMatrix();
+
+            b = sp.GetVector();
 
             if (action == "Cramer's method")
             {
@@ -108,8 +81,13 @@ namespace TestEquatMvc.Controllers
             {
                 contextSolveStrategy.Result = ex.Message;
             }
-
-            return View("Results", contextSolveStrategy);
+            return View("Index", contextSolveStrategy);
         }
+
+        public ActionResult GetResult(string result)
+        {
+            return PartialView(result);
+        }
+
     }
 }
