@@ -15,13 +15,11 @@ namespace TestEquatMvc.Models
             set { _strings = value; }
         }
 
-        private char[] charset;
+        private List<string> list; //список с элементами в виде строк
+        private List<double> blist;
+        private List<double> matr;   //список коэффициентов матрицы
+        private List<char> vars;  //список с переменными, чтобы отследить их количество и повторяемость
 
-        private List<string> list = new List<string>(); //список с элементами в виде строк
-        private List<double> blist = new List<double>();
-        List<double> matr = new List<double>();   //список коэффициентов матрицы
-        private List<char> vars = new List<char>();  //список с переменными, чтобы отследить их количество и повторяемость
-        
 
         public StringParser(String[] strings)
         {
@@ -35,15 +33,6 @@ namespace TestEquatMvc.Models
             matr = new List<double>();   //список коэффициентов матрицы
             vars = new List<char>();  //список с переменными, чтобы отследить их количество и повторяемость
             InitVariables();
-        }
-
-        public void Start()
-        {
-            foreach (var str in _strings)
-            {
-                
-            }
-
         }
 
         /// <summary>
@@ -75,13 +64,13 @@ namespace TestEquatMvc.Models
                     {
                         bool trig = false;
                         //if (vars.Count > 0)
-                            foreach (var v in vars)
+                        foreach (var v in vars)
+                        {
+                            if (v == ch)
                             {
-                                if (v == ch)
-                                {
-                                    trig = true;
-                                }
+                                trig = true;
                             }
+                        }
                         if (!trig) vars.Add(ch);
                     }
                 }
@@ -113,7 +102,7 @@ namespace TestEquatMvc.Models
                 string[] sss = ss[i].Split('-');
                 for (int j = 0; j < sss.Length; j++)
                 {
-                    if(sss[j] != "")
+                    if (sss[j] != "")
                         if (j == 0)
                         {
                             list.Add(sss[j]);
@@ -126,7 +115,7 @@ namespace TestEquatMvc.Models
             }
 
             string right = DeleteSpaces(strs[1]);
-            
+
             ss = right.Split('+');
             for (int i = 0; i < ss.Length; i++)
             {
@@ -154,7 +143,7 @@ namespace TestEquatMvc.Models
             {
                 bool result = Int32.TryParse(v, out b);
                 if (result)
-                    b1 -= b;          
+                    b1 -= b;
             }
 
             ///составляем матрицу элементов
@@ -181,7 +170,7 @@ namespace TestEquatMvc.Models
                         if (tmpstr == "-")
                         {
                             tmpstr = "-1";
-                        } 
+                        }
                         matr.Add(Int32.Parse(tmpstr));
                     }
                     else
@@ -193,11 +182,31 @@ namespace TestEquatMvc.Models
             blist.Add(b1);
         }
 
-        public void InixMatrixs()
+        public void InitMatrixs()
         {
             for (int i = 0; i < _strings.Length; i++)
             {
                 InitMatrix(_strings[i]);
             }
         }
+
+        /// <summary>
+        /// получить 2-хразмерную матрицу 
+        /// </summary>
+        /// <returns></returns>
+        public double[,] GetMatrix()
+        {
+            int d = _strings.Length; //размерность матрицы
+            double[,] matrix = new double[d, d];
+            for (int i = 0; i < d; i++)
+            {
+                for (int j = 0; j < d; j++)
+                {
+                    matrix[i, j] = matr[3 * i + j];
+                }
+            }
+            return matrix;
+        }
+    }
+
 }
