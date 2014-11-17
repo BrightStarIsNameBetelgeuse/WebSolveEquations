@@ -19,21 +19,25 @@ namespace TestEquatMvc.Controllers
         }
         
 
-        [HttpGet]
+        //[HttpGet]
         public ActionResult Index(ContextSolveStrategy context)
         {
             return View(context);
         }
 
-        [HttpPost]
-        public ActionResult Index(string[] names, string action)
+        //[HttpPost]
+        public ActionResult GetResult(string[] names, string action)
         {
+            if (Request.IsAjaxRequest())
+            {
+
+            }
             ContextSolveStrategy contextSolveStrategy = new ContextSolveStrategy();
             contextSolveStrategy.Dimension = 3;
             StringParser sp = new StringParser(names);
             int d = contextSolveStrategy.Dimension;
-            
-            double[,] matr = new double[d,d];
+
+            double[,] matr = new double[d, d];
             double[] b = new double[d];
             ///проверка на корректность введенных данных
             for (int i = 0; i < names.Length; i++)
@@ -42,7 +46,7 @@ namespace TestEquatMvc.Controllers
                 {
                     contextSolveStrategy.EmptyField = true;
                     break;
-                }   
+                }
             }
 
             if (contextSolveStrategy.CharField || contextSolveStrategy.EmptyField)
@@ -53,7 +57,7 @@ namespace TestEquatMvc.Controllers
                     ViewBag.Comment = contextSolveStrategy.Result;
                     return PartialView(contextSolveStrategy);
                 }
-                return RedirectToAction("Index", contextSolveStrategy);
+                return PartialView("Result", contextSolveStrategy);
             }
 
             sp.InitMatrixs();
@@ -77,16 +81,11 @@ namespace TestEquatMvc.Controllers
             {
                 contextSolveStrategy.Solve();
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 contextSolveStrategy.Result = ex.Message;
             }
-            return View("Index", contextSolveStrategy);
-        }
-
-        public ActionResult GetResult(string result)
-        {
-            return PartialView(result);
+            return PartialView("Result", contextSolveStrategy);
         }
 
     }
