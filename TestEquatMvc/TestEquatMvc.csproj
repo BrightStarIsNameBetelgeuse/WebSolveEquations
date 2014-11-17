@@ -201,7 +201,6 @@
     <Content Include="Images\menu_bullet.gif" />
     <Content Include="Images\text_box.gif" />
     <Content Include="Images\welcome_box.gif" />
-    <Content Include="Scripts\AjaxDemo.js" />
     <Content Include="Scripts\jquery-1.7.1.js" />
     <Content Include="Scripts\jquery-1.7.1.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />

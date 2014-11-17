@@ -25,7 +25,7 @@ namespace TestEquatMvc.Controllers
             return View(context);
         }
 
-        //[HttpPost]
+        [HttpPost]
         public ActionResult GetResult(string[] names, string action)
         {
             if (Request.IsAjaxRequest())
