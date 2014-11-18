@@ -74,9 +74,6 @@ textarea {
     display: none;
 }
 
-h2 {
-    color:#fff;
-}
 
 .center_content{
     width:821px;
@@ -107,6 +104,29 @@ h2 {
 span.red {
     font-weight: bold;
     color: #da5b23;
+}
+
+.result_content{
+    padding:30px 35px 0 35px;
+}
+
+.result_box{
+    width:496px;
+    height:202px;
+    background:url(/Images/welcome_box.gif) no-repeat center;
+    padding:0px;
+}
+
+p{
+    padding:0px;
+    text-align:justify;
+    margin:0px;
+    line-height:20px;
+    font-size: 15px;
+    font-weight:700;
+}
+p.result{
+    padding:15px 10px 0 35px;
 }
 
 /*---------------- menu tab----------------------*/
