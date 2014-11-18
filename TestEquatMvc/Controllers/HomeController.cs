@@ -17,7 +17,7 @@ namespace TestEquatMvc.Controllers
         {
             return View();
         }
-        
+
 
         //[HttpGet]
         public ActionResult Index(ContextSolveStrategy context)
@@ -26,12 +26,8 @@ namespace TestEquatMvc.Controllers
         }
 
         [HttpPost]
-        public ActionResult GetResult(string[] names, string action)
+        public ActionResult GetResult(string[] names, string Action)
         {
-            if (Request.IsAjaxRequest())
-            {
-
-            }
             ContextSolveStrategy contextSolveStrategy = new ContextSolveStrategy();
             contextSolveStrategy.Dimension = 3;
             StringParser sp = new StringParser(names);
@@ -49,13 +45,17 @@ namespace TestEquatMvc.Controllers
                 }
             }
 
-            if (contextSolveStrategy.CharField || contextSolveStrategy.EmptyField)
+            if (contextSolveStrategy.CharField || contextSolveStrategy.EmptyField || !(sp.CheckVariables()))
             {
                 contextSolveStrategy.Result = "The fields contain empty or incorrect";
                 if (Request.IsAjaxRequest())
                 {
-                    ViewBag.Comment = contextSolveStrategy.Result;
-                    return PartialView(contextSolveStrategy);
+                    //contextSolveStrategy.TypeMethod = action;
+                    if (Action == "Cramer's method")
+                        contextSolveStrategy.TypeMethod = "Cramer";
+                    if (Action == "Gauss's method")
+                        contextSolveStrategy.TypeMethod = "Gauss";
+                    return PartialView("Result", contextSolveStrategy);
                 }
                 return PartialView("Result", contextSolveStrategy);
             }
@@ -66,12 +66,12 @@ namespace TestEquatMvc.Controllers
 
             b = sp.GetVector();
 
-            if (action == "Cramer's method")
+            if (Action == "Cramer's method")
             {
                 contextSolveStrategy.TypeMethod = "Cramer";
                 contextSolveStrategy.SetStrategy(new CramerStrategy(matr, b));
             }
-            if (action == "Gauss's method")
+            if (Action == "Gauss's method")
             {
                 contextSolveStrategy.TypeMethod = "Gauss";
                 contextSolveStrategy.SetStrategy(new GaussStrategy(matr, b));
