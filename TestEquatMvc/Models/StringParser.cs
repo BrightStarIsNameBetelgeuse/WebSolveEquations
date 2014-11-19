@@ -217,6 +217,26 @@ namespace TestEquatMvc.Models
             }
             return b;
         }
+
+        /// <summary>
+        /// Проверка на наличие знака равенства
+        /// </summary>
+        /// <param name="str"></param>
+        /// <returns></returns>
+        private bool CheckEqualsSign(string str)
+        {
+            bool flag = false;
+            for (int i = 0; i < str.Length; i++)
+            {
+                if(str[i] == '=') 
+                { 
+                    flag = true; 
+                    break;
+                }
+            }
+            return flag;
+        }
+
     }
 
 }
