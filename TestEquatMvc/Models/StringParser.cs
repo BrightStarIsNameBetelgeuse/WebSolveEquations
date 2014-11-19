@@ -7,9 +7,9 @@ namespace TestEquatMvc.Models
 {
     public class StringParser
     {
-        private String[] _strings;  //введенные строки
+        private List<string> _strings;  //введенные строки
 
-        public String[] Strings
+        public List<string> Strings
         {
             get { return _strings; }
             set { _strings = value; }
@@ -21,10 +21,10 @@ namespace TestEquatMvc.Models
         private List<char> vars;  //список с переменными, чтобы отследить их количество и повторяемость
 
 
-        public StringParser(String[] strings)
+        public StringParser(List<string> strings)
         {
             _strings = strings;
-            for (int i = 0; i < _strings.Length; i++)
+            for (int i = 0; i < _strings.Count; i++)
             {
                 _strings[i] = DeleteSpaces(_strings[i]);
             }
@@ -56,7 +56,7 @@ namespace TestEquatMvc.Models
         /// </summary>
         private void InitVariables()
         {
-            for (int i = 0; i < _strings.Length; i++)
+            for (int i = 0; i < _strings.Count; i++)
             {
                 foreach (var ch in _strings[i])
                 {
@@ -83,7 +83,7 @@ namespace TestEquatMvc.Models
         /// <returns></returns>
         public bool CheckVariables()
         {
-            if (_strings.Length == vars.Count)
+            if (_strings.Count == vars.Count)
                 return true;
             else return false;
         }
@@ -183,7 +183,7 @@ namespace TestEquatMvc.Models
 
         public void InitMatrixs()
         {
-            for (int i = 0; i < _strings.Length; i++)
+            for (int i = 0; i < _strings.Count; i++)
             {
                 InitMatrix(_strings[i]);
             }
@@ -195,7 +195,7 @@ namespace TestEquatMvc.Models
         /// <returns></returns>
         public double[,] GetMatrix()
         {
-            int d = _strings.Length; //размерность матрицы
+            int d = _strings.Count; //размерность матрицы
             double[,] matrix = new double[d, d];
             for (int i = 0; i < d; i++)
             {
@@ -209,7 +209,7 @@ namespace TestEquatMvc.Models
 
         public double[] GetVector()
         {
-            int d = _strings.Length; //размерность матрицы
+            int d = _strings.Count; //размерность матрицы
             double[] b = new double[d];
             for (int i = 0; i < d; i++)
             {

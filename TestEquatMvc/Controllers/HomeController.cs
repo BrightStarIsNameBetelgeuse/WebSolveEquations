@@ -26,19 +26,29 @@ namespace TestEquatMvc.Controllers
         }
 
         [HttpPost]
-        public ActionResult GetResult(string[] names, string Action)
+        public ActionResult GetResult(string names, string Action)
         {
             ContextSolveStrategy contextSolveStrategy = new ContextSolveStrategy();
-            contextSolveStrategy.Dimension = 3;
-            StringParser sp = new StringParser(names);
-            int d = contextSolveStrategy.Dimension;
+            //contextSolveStrategy.Dimension = 3;
+            char[] chars = { '\r','\n'};
+            string[] strs = names.Split(chars);
+            List<string> equats = new List<string>();
 
-            double[,] matr = new double[d, d];
-            double[] b = new double[d];
-            ///проверка на корректность введенных данных
-            for (int i = 0; i < names.Length; i++)
+            for (int i = 0; i < strs.Length; i++)
             {
-                if (names[i].Length == 0)
+                if(strs[i] != "")
+                    equats.Add(strs[i]);
+            }
+
+            StringParser sp = new StringParser(equats);
+            int dimension = equats.Count;   //количество уравнений == размерность матрицы
+
+            double[,] matr = new double[dimension, dimension];
+            double[] b = new double[dimension];
+            ///проверка на корректность введенных данных
+            for (int i = 0; i < equats.Count; i++)
+            {
+                if (equats[i].Length == 0)
                 {
                     contextSolveStrategy.EmptyField = true;
                     break;
