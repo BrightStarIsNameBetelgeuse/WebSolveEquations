@@ -20,6 +20,12 @@ namespace TestEquatMvc.Models
         private List<double> matr;   //список коэффициентов матрицы
         private List<char> vars;  //список с переменными, чтобы отследить их количество и повторяемость
 
+        public List<char> Vars
+        {
+            get { return vars; }
+            set {  }
+        }
+
 
         public StringParser(List<string> strings)
         {
@@ -201,7 +207,7 @@ namespace TestEquatMvc.Models
             {
                 for (int j = 0; j < d; j++)
                 {
-                    matrix[i, j] = matr[3 * i + j];
+                    matrix[i, j] = matr[d * i + j];
                 }
             }
             return matrix;

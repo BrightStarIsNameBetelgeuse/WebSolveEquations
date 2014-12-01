@@ -131,6 +131,7 @@
     <Compile Include="Models\GaussStrategy.cs" />
     <Compile Include="Models\ISolveStrategy.cs" />
     <Compile Include="Models\Matrix.cs" />
+    <Compile Include="Models\Solution.cs" />
     <Compile Include="Models\StringParser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

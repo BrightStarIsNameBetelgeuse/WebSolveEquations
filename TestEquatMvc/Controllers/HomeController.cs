@@ -11,7 +11,6 @@ namespace TestEquatMvc.Controllers
     {
         //
         // GET: /Home/
-
         [HttpGet]
         public ActionResult Start()
         {
@@ -29,6 +28,7 @@ namespace TestEquatMvc.Controllers
         public ActionResult GetResult(string names, string Action)
         {
             ContextSolveStrategy contextSolveStrategy = new ContextSolveStrategy();
+
             //contextSolveStrategy.Dimension = 3;
             char[] chars = { '\r','\n'};
             string[] strs = names.Split(chars);
@@ -41,6 +41,7 @@ namespace TestEquatMvc.Controllers
             }
 
             StringParser sp = new StringParser(equats);
+
             int dimension = equats.Count;   //количество уравнений == размерность матрицы
 
             double[,] matr = new double[dimension, dimension];
@@ -75,6 +76,9 @@ namespace TestEquatMvc.Controllers
             matr = sp.GetMatrix();
 
             b = sp.GetVector();
+
+            contextSolveStrategy.Solution.Vars = sp.Vars;
+            
 
             if (Action == "Cramer's method")
             {
