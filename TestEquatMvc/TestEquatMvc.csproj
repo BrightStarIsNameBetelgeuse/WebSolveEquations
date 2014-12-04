@@ -200,6 +200,8 @@
     <Content Include="Images\login.gif" />
     <Content Include="Images\menu_bg.gif" />
     <Content Include="Images\menu_bullet.gif" />
+    <Content Include="Images\my_body.png" />
+    <Content Include="Images\my_menu.png" />
     <Content Include="Images\text_box.gif" />
     <Content Include="Images\welcome_box.gif" />
     <Content Include="Scripts\jquery-1.7.1.js" />

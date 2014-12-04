@@ -1,20 +1,19 @@
 ﻿body {
-    background:url(../Images/bg.gif) repeat #000000;
-    padding:0; font-family:arial, sans-serif; font-size:12px;
-    margin:0px auto auto auto;
-    color:#36322b;
+    background-color: #dcf5ff;
+    margin: 10px;
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+    font-size: 11px;
+    color: #bbbbbb;
 }
 
 header, footer, nav, section {
     display: block;
 }
 
-#header{
-    width:821px;
-    height:135px;
-    margin:0px;
-    padding:0px;
-    background:url(../Images/header_bg.gif) no-repeat center top;
+#my_header{
+    width:940px;
+    height: 60px;
+    padding-top: 20px;
 }
 
 #main_container{
@@ -167,4 +166,57 @@ p.result{
 }
 .menu ul li a:hover{
     background:url(../Images/menu_bullet.gif) no-repeat bottom center;
+}
+
+/*----------New----------*/
+#my_menu {
+    clear:both;
+    width: 940px;
+    height: 53px;
+    background: url(../Images/my_menu.png)
+}
+
+#my_menu ul.current {
+    color: #666;
+    text-shadow:1px 1px 1px #fff
+}
+
+#my_menu ul .last { 
+    background: none 
+
+}
+
+#my_body_wrapper {
+    width: 100%;
+    background: url(../Images/my_body.png)
+}
+
+#my_wrapper {
+    width: 940px;
+    padding: 0 10px;
+    margin: 0 auto;
+    background: url(../Images/my_body.png)
+}
+
+#welcome {
+    clear: both;
+    width: 860px;
+    height: 240px;
+    padding: 30px 40px;
+    overflow: hidden;
+    background: url(../Images/welcome.png) repeat-y
+}
+
+#welcome p {
+    font-size: 18px;
+    color: #666;
+    line-height: 30px;
+    margin-bottom: 20px;
+}
+
+#my_main {
+    clear: both;
+    width: 940px;
+    padding: 30px 0;
+    background: url(../Images/content.png)
 }
