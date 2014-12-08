@@ -84,24 +84,36 @@ namespace TestEquatMvc.Models
         }
 
         /// <summary>
-        /// Проверить, совпадает ли количество строк с количеством переменных
+        /// Проверить, количество переменных больше кол-ва уравнений (строк)
         /// </summary>
         /// <returns></returns>
         public bool CheckVariables()
         {
-            if (_strings.Count == vars.Count)
+            if ( vars.Count >= _strings.Count)
                 return true;
             else return false;
+        }
+
+        /// <summary>
+        /// Сокращение
+        /// </summary>
+        /// <param name="str"></param>
+        private void Reduction(string str)
+        {
+            //for (int i = 0; i < str.Length; i++)
+            //{
+            //    if()
+            //}
         }
 
         private void InitMatrix(string str)
         {
             list.Clear();
-            string[] strs = str.Split('=');
+            string[] strs = str.Split('='); //разделяем на 2 половины по знаку равенства
+                                                    //левая часть
+            string left = DeleteSpaces(strs[0]);    //удаляем все пробелы, если есть
 
-            string left = DeleteSpaces(strs[0]);
-
-            string[] ss = left.Split('+');
+            string[] ss = left.Split('+');          
 
             for (int i = 0; i < ss.Length; i++)
             {
