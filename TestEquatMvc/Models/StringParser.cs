@@ -17,7 +17,7 @@ namespace TestEquatMvc.Models
 
         private List<string> list; //список с элементами в виде строк
         private List<double> blist;
-        private List<double> matr;   //список коэффициентов матрицы
+        private double[,] matr;   //список коэффициентов матрицы
         private List<char> vars;  //список с переменными, чтобы отследить их количество и повторяемость
 
         public List<char> Vars
@@ -36,7 +36,7 @@ namespace TestEquatMvc.Models
             }
             list = new List<string>(); //список с элементами в виде строк
             blist = new List<double>();
-            matr = new List<double>();   //список коэффициентов матрицы
+            //matr = new List<double>();   //список коэффициентов матрицы
             vars = new List<char>();  //список с переменными, чтобы отследить их количество и повторяемость
             InitVariables();
         }
@@ -84,7 +84,7 @@ namespace TestEquatMvc.Models
         }
 
         /// <summary>
-        /// Проверить, количество переменных больше кол-ва уравнений (строк)
+        /// Проверка, если количество переменных больше кол-ва уравнений (строк)
         /// </summary>
         /// <returns></returns>
         public bool CheckVariables()
@@ -103,12 +103,13 @@ namespace TestEquatMvc.Models
             //for (int i = 0; i < str.Length; i++)
             //{
             //    if()
-            //}
+            //}`
         }
 
-        private void InitMatrix(string str)
+        private void InitVector(string str, int k)
         {
             list.Clear();
+
             string[] strs = str.Split('='); //разделяем на 2 половины по знаку равенства
                                                     //левая часть
             string left = DeleteSpaces(strs[0]);    //удаляем все пробелы, если есть
@@ -155,46 +156,44 @@ namespace TestEquatMvc.Models
             //парсинг
             int b, b1 = 0;  //b1 - переменная, которая хранит свободный член
 
+            matr = new double[_strings.Count,vars.Count];  //создаем матрицу
+
+            int c = 0;
+            foreach (var ch in vars)
+            {
+                int sum = 0;
+
+                for (int i = 0; i < list.Count; i++)
+                {
+                    if (list[i][list[i].Length - 1] > '9')
+                        if (ch == list[i][list[i].Length - 1])
+                        {
+                            if (list[i].Length > 1)
+                                if (list[i][list[i].Length - 2] == '-')
+                                {
+                                    sum += -1;
+                                }
+                                else
+                                {
+                                    sum += Int32.Parse(list[i].Remove(list[i].Length - 1));
+                                }
+                            else
+                            {
+                                sum += 1;
+                            }
+                        }
+                    
+                }
+                matr[k, c] = sum;
+                c++;
+            }
+
             //находим свободный член
             foreach (var v in list)
             {
                 bool result = Int32.TryParse(v, out b);
                 if (result)
                     b1 -= b;
-            }
-
-            ///составляем матрицу элементов
-            foreach (var v in vars)
-            {
-                bool t = false;
-                string tmpstr = "";
-                foreach (var s in list)
-                {
-                    if (s.ToCharArray()[s.Length - 1] == v)
-                    {
-                        t = true;
-                        tmpstr = s;
-                        break;
-                    }
-                }
-                if (!t)
-                    matr.Add(0);    //если переменная в уравнении отсутствует, вместо нее - 0
-                else
-                {
-                    if (tmpstr.Length > 1)  //если у переменной в выражении есть коэффициенты
-                    {
-                        tmpstr = tmpstr.Remove(tmpstr.Length - 1);
-                        if (tmpstr == "-")
-                        {
-                            tmpstr = "-1";
-                        }
-                        matr.Add(Int32.Parse(tmpstr));
-                    }
-                    else
-                    {
-                        matr.Add(1);
-                    }
-                }
             }
             blist.Add(b1);
         }
@@ -203,7 +202,7 @@ namespace TestEquatMvc.Models
         {
             for (int i = 0; i < _strings.Count; i++)
             {
-                InitMatrix(_strings[i]);
+                InitVector(_strings[i],i);
             }
         }
 
@@ -213,16 +212,7 @@ namespace TestEquatMvc.Models
         /// <returns></returns>
         public double[,] GetMatrix()
         {
-            int d = _strings.Count; //размерность матрицы
-            double[,] matrix = new double[d, d];
-            for (int i = 0; i < d; i++)
-            {
-                for (int j = 0; j < d; j++)
-                {
-                    matrix[i, j] = matr[d * i + j];
-                }
-            }
-            return matrix;
+            return matr;
         }
 
         public double[] GetVector()
