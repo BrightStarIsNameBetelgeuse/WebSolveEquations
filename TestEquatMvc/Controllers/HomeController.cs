@@ -87,5 +87,10 @@ namespace TestEquatMvc.Controllers
             return PartialView("Result", contextSolveStrategy);
         }
 
+        public ActionResult ClearResult()
+        {
+            return PartialView("Result");
+        }
+
     }
 }

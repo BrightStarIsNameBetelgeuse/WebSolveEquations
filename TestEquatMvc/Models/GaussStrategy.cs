@@ -21,9 +21,30 @@ namespace TestEquatMvc.Models
                 throw new ArgumentNullException("One of the parameters is null.");
 
             int b_length = b_vector.Length;
-            int a_length = matrix.Length;
+            int a_length = matrix.GetLength(1);
             if (a_length != b_length * b_length)
-                throw new ArgumentException(@"The number of rows and columns in the matrix A must match the number of elements in the vector B.");
+            {
+                //    throw new ArgumentException(@"The number of rows and columns in the matrix A must match the number of elements in the vector B.");
+                //int row = matrix.GetUpperBound(0);
+                if (a_length > b_length)
+                    throw new ArgumentException(@"The number of rows and columns in the matrix A must match the number of elements in the vector B.");
+                else
+                {
+                    //throw new ArgumentException(@"GOVNOOOOOOOOOOOOOO");
+                    //добавляем нули
+                    //int delta = b_length - a_length;
+                    double[,] dmatrix = new double[b_length, b_length];
+                    for (int i = 0; i < matrix.GetLength(0); i++)
+                    {
+                        for (int j = 0; j < matrix.GetLength(1); j++)
+                        {
+                            dmatrix[i, j] = matrix[i, j];
+                        }
+                    }
+                    matrix = dmatrix;
+                    dmatrix = null;
+                }
+            }
 
             //this.initial_a_matrix = a_matrix;  // запоминаем исходную матрицу
             this.matrix = (double[,])matrix.Clone(); // с её копией будем производить вычисления

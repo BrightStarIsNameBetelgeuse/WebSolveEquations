@@ -20,12 +20,20 @@
             <button type="submit" value="Cramer's method">Solve </button>
                        
     }
-
+    
     <p class ="result">Output</p>
     <div  class="result_box" id="results">    
-
+        
     </div> 
-    
+    @*@using (Ajax.BeginForm("ClearResult", new AjaxOptions
+    {
+        HttpMethod = "POST",
+        //InsertionMode = InsertionMode.Replace,
+        //UpdateTargetId = "results"
+    }))
+    {
+        <button>Clear</button>
+    }*@
 
     
     

@@ -81,6 +81,7 @@ namespace TestEquatMvc.Models
                     }
                 }
             }
+            matr = new double[_strings.Count, vars.Count];  //создаем матрицу
         }
 
         /// <summary>
@@ -89,7 +90,7 @@ namespace TestEquatMvc.Models
         /// <returns></returns>
         public bool CheckVariables()
         {
-            if ( vars.Count >= _strings.Count)
+            if ( vars.Count > _strings.Count)
                 return true;
             else return false;
         }
@@ -156,7 +157,7 @@ namespace TestEquatMvc.Models
             //парсинг
             int b, b1 = 0;  //b1 - переменная, которая хранит свободный член
 
-            matr = new double[_strings.Count,vars.Count];  //создаем матрицу
+            
 
             int c = 0;
             foreach (var ch in vars)
