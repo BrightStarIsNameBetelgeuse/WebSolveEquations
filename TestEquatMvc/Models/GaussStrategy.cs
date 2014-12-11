@@ -26,24 +26,27 @@ namespace TestEquatMvc.Models
             {
                 //    throw new ArgumentException(@"The number of rows and columns in the matrix A must match the number of elements in the vector B.");
                 //int row = matrix.GetUpperBound(0);
-                if (a_length > b_length)
-                    throw new ArgumentException(@"The number of rows and columns in the matrix A must match the number of elements in the vector B.");
-                else
+                //if (a_length > b_length) 
+                //{
+                //    throw new ArgumentException(@"The number of rows and columns in the matrix A must match the number of elements in the vector B.");
+                //}
+                
+                //else
+                //{
+                //    
+                //    //добавляем нули
+                //    
+                double[,] dmatrix = new double[b_length, b_length];
+                for (int i = 0; i < matrix.GetLength(0); i++)
                 {
-                    //throw new ArgumentException(@"GOVNOOOOOOOOOOOOOO");
-                    //добавляем нули
-                    //int delta = b_length - a_length;
-                    double[,] dmatrix = new double[b_length, b_length];
-                    for (int i = 0; i < matrix.GetLength(0); i++)
+                    for (int j = 0; j < matrix.GetLength(1); j++)
                     {
-                        for (int j = 0; j < matrix.GetLength(1); j++)
-                        {
-                            dmatrix[i, j] = matrix[i, j];
-                        }
+                        dmatrix[i, j] = matrix[i, j];
                     }
-                    matrix = dmatrix;
-                    dmatrix = null;
                 }
+                matrix = dmatrix;
+                dmatrix = null;
+                //}
             }
 
             //this.initial_a_matrix = a_matrix;  // запоминаем исходную матрицу
@@ -59,7 +62,7 @@ namespace TestEquatMvc.Models
         public double[] Solve()
         {
             int[] index = InitIndex();
-            GaussForwardStroke(index);
+            GaussForwardStroke2();
             GaussBackwardStroke(index);
             return results;
         }
@@ -146,6 +149,114 @@ namespace TestEquatMvc.Models
                     vector[k] -= vector[i] * p;
                     matrix[k, index[i]] = 0.0;
                 }
+            }
+        }
+
+        /// <summary>
+        /// поменять местами вектора в матрице
+        /// </summary>
+        /// <param name="old_index">индекс старой строки</param>
+        /// <param name="new_index">индекс новой строки</param>
+        private void Replace(int old_index, int new_index)
+        {
+            for (int i = 0; i < size; i++)
+            {
+                double t = matrix[old_index, i];
+                matrix[old_index, i] = matrix[new_index, i];
+                matrix[new_index, i] = t;
+            }
+        }
+
+        /// <summary>
+        /// Занести вектор в матрицу
+        /// </summary>
+        /// <param name="vector"></param>
+        /// <param name="ind"></param>
+        private void SetVectorInMatrix(int ind, double[] vector)
+        {
+            for (int i = 0; i < size; i++)
+            {
+                matrix[ind, i] = vector[i];
+            }
+        }
+
+        /// <summary>
+        /// Получить вектор из матрицы
+        /// </summary>
+        /// <param name="ind">индекс по вертикали</param>
+        /// <returns></returns>
+        private double[] GetVectorFromMatrix(int ind)
+        {
+            double[] vector = new double[matrix.GetLength(0)]; 
+            for (int i = 0; i < size; i++)
+            {
+                vector[i] = matrix[ind, i];
+            }
+
+            return vector;
+        }
+
+        private void GaussForwardStroke2()
+        {
+            double[] main_vector = new double[size]; //главный вектор, который будет умножаться и вычитаться
+
+            int n = 0; //номер строки в матрице
+            int delta = 0;
+
+            //выбираем главный вектор
+            double main_el = matrix[n,n];
+            main_vector = GetVectorFromMatrix(n + delta);
+            while (main_el == 0)
+            {
+                delta++;
+                Replace(n, n + delta);
+
+                main_vector = GetVectorFromMatrix(n+delta);
+                main_el = main_vector[n];
+            }
+
+            int numMainVector = 0;
+            
+            //анализ след векторов
+            for (int i = 1; i < size; i++)
+            {
+                //делим вектор на первый его элемент
+                for (int id = 0; id < size; id++)
+                {
+                    main_vector[id] /= main_el;
+                }
+
+                double[] tmp_vector = GetVectorFromMatrix(i);
+                double m = tmp_vector[numMainVector - 1];
+
+                m = m * (-1);
+                //вычитание
+                for (int j = 0; j < size; j++)
+                {
+                    tmp_vector[j] = tmp_vector[j] + m * main_vector[j];
+                }
+
+                SetVectorInMatrix(i,tmp_vector);    //заменяем на новый
+                if (i == (size - 1))
+                {
+                    //bool zero = false;
+                    int counter = 0;
+
+                    for (int k = 0; k < size; k++)
+                    {
+                        if (matrix[i, k] != 0.0)
+                        {
+                            counter++;
+                        }
+                    }
+                    if (counter > 1)
+                    {
+                        numMainVector++;
+                        i = 1; 
+                        main_vector = GetVectorFromMatrix(numMainVector);
+                    }
+                }
+                //main_vector = tmp_vector;   //делаем главным вектор следующий
             }
         }
 
