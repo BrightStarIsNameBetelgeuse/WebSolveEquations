@@ -10,6 +10,7 @@ namespace TestEquatMvc.Models
         private double[] vector;   // вектор b
         private double eps;          // порядок точности для сравнения вещественных чисел 
         private int size;            // размерность задачи
+        private int count_vars;
 
 
         public GaussStrategy(double[,] matrix, double[] b_vector)
@@ -19,6 +20,7 @@ namespace TestEquatMvc.Models
         {
             if (matrix == null || b_vector == null)
                 throw new ArgumentNullException("One of the parameters is null.");
+            count_vars = matrix.GetLength(1);
 
             int b_length = b_vector.Length;
             int a_length = matrix.GetLength(1);
@@ -53,7 +55,7 @@ namespace TestEquatMvc.Models
             this.matrix = (double[,])matrix.Clone(); // с её копией будем производить вычисления
             //this.initial_b_vector = b_vector;  // запоминаем исходный вектор
             this.vector = (double[])b_vector.Clone();  // с его копией будем производить вычисления
-            this.results = new double[b_length];
+            this.results = new double[count_vars];
             //this.u_vector = new double[b_length];
             this.size = b_length;
             this.eps = eps;
@@ -216,18 +218,22 @@ namespace TestEquatMvc.Models
             }
 
             int numMainVector = 0;
-            
+            double b_val = vector[n];
             //анализ след векторов
             for (int i = 1; i < size; i++)
             {
+                main_el = main_vector[numMainVector];
                 //делим вектор на первый его элемент
                 for (int id = 0; id < size; id++)
                 {
                     main_vector[id] /= main_el;
                 }
 
+                b_val /= main_el;
+                double tmp_b = vector[i];
+
                 double[] tmp_vector = GetVectorFromMatrix(i);
-                double m = tmp_vector[numMainVector - 1];
+                double m = tmp_vector[numMainVector];
 
                 m = m * (-1);
                 //вычитание
@@ -235,8 +241,11 @@ namespace TestEquatMvc.Models
                 {
                     tmp_vector[j] = tmp_vector[j] + m * main_vector[j];
                 }
+                tmp_b += m * b_val;
 
-                SetVectorInMatrix(i,tmp_vector);    //заменяем на новый
+                SetVectorInMatrix(i,tmp_vector);    //заменяем на новое значение
+                vector[i] = tmp_b;
+
                 if (i == (size - 1))
                 {
                     //bool zero = false;
@@ -251,12 +260,11 @@ namespace TestEquatMvc.Models
                     }
                     if (counter > 1)
                     {
-                        numMainVector++;
                         i = 1; 
-                        main_vector = GetVectorFromMatrix(numMainVector);
                     }
                 }
-                //main_vector = tmp_vector;   //делаем главным вектор следующий
+                numMainVector++;
+                main_vector = tmp_vector;   //делаем главным вектор следующий
             }
         }
 
@@ -266,13 +274,20 @@ namespace TestEquatMvc.Models
             // перемещаемся по каждой строке снизу вверх
             for (int i = size - 1; i >= 0; --i)
             {
-                // 1) задаётся начальное значение элемента x
-                double x_i = vector[i];
+                //// 1) задаётся начальное значение элемента x
+                //double x_i = vector[i];
 
-                // 2) корректировка этого значения
-                for (int j = i + 1; j < size; ++j)
-                    x_i -= results[index[j]] * matrix[i, index[j]];
-                results[index[i]] = x_i;
+                //// 2) корректировка этого значения
+                for (int j = i + 1; j < size; ++j) 
+                {
+                    //    x_i -= results[index[j]] * matrix[i, index[j]];
+                }
+                //results[index[i]] = x_i;
+
+                for (int j = results.Length - 1; j >= 0; j--)
+                {
+
+                }
             }
         }
 
