@@ -219,6 +219,7 @@ namespace TestEquatMvc.Models
 
             int numMainVector = 0;
             double b_val = vector[n];
+
             //анализ след векторов
             for (int i = 1; i < size; i++)
             {
@@ -271,11 +272,14 @@ namespace TestEquatMvc.Models
         // Обратный ход метода Гаусса
         private void GaussBackwardStroke(int[] index)
         {
+            bool tmpTrigger = true;
+            bool tmpZero = true;
+            double tmp_sum = 0;
             // перемещаемся по каждой строке снизу вверх
             for (int i = size - 1; i >= 0; --i)
             {
                 //// 1) задаётся начальное значение элемента x
-                //double x_i = vector[i];
+                double x_i = vector[i];
 
                 //// 2) корректировка этого значения
                 for (int j = i + 1; j < size; ++j) 
@@ -286,7 +290,24 @@ namespace TestEquatMvc.Models
 
                 for (int j = results.Length - 1; j >= 0; j--)
                 {
+                    if (j == results.Length - 1)
+                    {
+                        for (int k = 0; k < matrix.GetLength(1); k++)
+                            if (matrix[i, k] != 0)
+                            {
+                                tmpZero = false;
+                                break;
+                            }
+                        if (tmpZero == true)
+                        {
+                            tmpZero = false;
+                            break;         
+                        }
+                    }
+                    
+                    results[i] = (x_i - tmp_sum) / matrix[i, j];
 
+                    tmp_sum += results[i] * matrix[i, j];                    
                 }
             }
         }
