@@ -285,3 +285,4 @@ D:\w\TestEquatMvc\bin\ru\System.Web.WebPages.Razor.resources.dll
 D:\w\TestEquatMvc\obj\Debug\TestEquatMvc.csprojResolveAssemblyReference.cache
 D:\w\TestEquatMvc\obj\Debug\TestEquatMvc.dll
 D:\w\TestEquatMvc\obj\Debug\TestEquatMvc.pdb
+D:\w\TestEquatMvc\bin\TestEquatMvc.dll.config

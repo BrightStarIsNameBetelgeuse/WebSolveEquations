@@ -1,19 +1,20 @@
 ﻿body {
-    background-color: #dcf5ff;
-    margin: 10px;
-    font-family: Verdana, Arial, Helvetica, sans-serif;
-    font-size: 11px;
-    color: #bbbbbb;
+    background:url(../Images/bg.gif) repeat #000000;
+    padding:0; font-family:arial, sans-serif; font-size:12px;
+    margin:0px auto auto auto;
+    color:#36322b;
 }
 
 header, footer, nav, section {
     display: block;
 }
 
-#my_header{
-    width:940px;
-    height: 60px;
-    padding-top: 20px;
+#header{
+    width:821px;
+    height:135px;
+    margin:0px;
+    padding:0px;
+    background:url(../Images/header_bg.gif) no-repeat center top;
 }
 
 #main_container{

@@ -25,7 +25,7 @@ namespace TestEquatMvc.Controllers
         }
 
         [HttpPost]
-        public ActionResult GetResult(string names, string Action)
+        public ActionResult GetResult(string names)
         {
             ContextSolveStrategy contextSolveStrategy = new ContextSolveStrategy();
 
@@ -61,11 +61,11 @@ namespace TestEquatMvc.Controllers
                 contextSolveStrategy.Result = "The fields contain empty or incorrect";
                 if (Request.IsAjaxRequest())
                 {
-                    //contextSolveStrategy.TypeMethod = action;
-                    if (Action == "Cramer's method")
-                        contextSolveStrategy.TypeMethod = "Cramer";
-                    if (Action == "Gauss's method")
-                        contextSolveStrategy.TypeMethod = "Gauss";
+                        ////contextSolveStrategy.TypeMethod = action;
+                        //if (Action == "Cramer's method")
+                        //    contextSolveStrategy.TypeMethod = "Cramer";
+                        //if (Action == "Gauss's method")
+                        //    contextSolveStrategy.TypeMethod = "Gauss";
                     return PartialView("Result", contextSolveStrategy);
                 }
                 return PartialView("Result", contextSolveStrategy);
@@ -78,21 +78,10 @@ namespace TestEquatMvc.Controllers
             b = sp.GetVector();
 
             contextSolveStrategy.Solution.Vars = sp.Vars;
-            
-
-            if (Action == "Cramer's method")
-            {
-                contextSolveStrategy.TypeMethod = "Cramer";
-                contextSolveStrategy.SetStrategy(new CramerStrategy(matr, b));
-            }
-            if (Action == "Gauss's method")
-            {
-                contextSolveStrategy.TypeMethod = "Gauss";
-                contextSolveStrategy.SetStrategy(new GaussStrategy(matr, b));
-            }
 
             try
             {
+                contextSolveStrategy.SetStrategy(new GaussStrategy(matr, b));
                 contextSolveStrategy.Solve();
             }
             catch (Exception ex)
