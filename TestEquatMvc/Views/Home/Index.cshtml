@@ -14,24 +14,27 @@
         //InsertionMode = InsertionMode.Replace,
         UpdateTargetId = "results"
     }))
-    {
-            
-            <!--<input id="names1" name="names" type="text" value="" />
-            <br />
-            <input id="names2" name="names" type="text" value="" />
-            <br />
-            <input id="names3" name="names" type="text" value="" />-->
-        
+    {        
             <textarea id="names1" name="names" ></textarea>
             <br/>
-            <button type="submit" value="Cramer's method" name="Action">Solve </button>
-                       
+
+            <button type="submit" value="Cramer's method">Solve </button>
+                   
     }
+    
     <p class ="result">Output</p>
     <div  class="result_box" id="results">    
-
+        
     </div> 
-    
+    @*@using (Ajax.BeginForm("ClearResult", new AjaxOptions
+    {
+        HttpMethod = "POST",
+        //InsertionMode = InsertionMode.Replace,
+        //UpdateTargetId = "results"
+    }))
+    {
+        <button>Clear</button>
+    }*@
 
     
     

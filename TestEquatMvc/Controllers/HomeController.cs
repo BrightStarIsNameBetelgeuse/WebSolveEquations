@@ -32,7 +32,7 @@ namespace TestEquatMvc.Controllers
             //contextSolveStrategy.Dimension = 3;
             char[] chars = { '\r','\n'};
             string[] strs = names.Split(chars);
-            List<string> equats = new List<string>();
+            List<string> equats = new List<string>();   //список уравнений
 
             for (int i = 0; i < strs.Length; i++)
             {
@@ -42,10 +42,13 @@ namespace TestEquatMvc.Controllers
 
             StringParser sp = new StringParser(equats);
 
-            int dimension = equats.Count;   //количество уравнений == размерность матрицы
+            int vcount = sp.Vars.Count; //количество переменных
+            
+            int ecount = equats.Count;  //количество уравнений
 
-            double[,] matr = new double[dimension, dimension];
-            double[] b = new double[dimension];
+            double[,] matr = new double[ecount, vcount];
+            double[] b = new double[ecount];
+
             ///проверка на корректность введенных данных
             for (int i = 0; i < equats.Count; i++)
             {
@@ -56,7 +59,7 @@ namespace TestEquatMvc.Controllers
                 }
             }
 
-            if (contextSolveStrategy.CharField || contextSolveStrategy.EmptyField || !(sp.CheckVariables()))
+            if (contextSolveStrategy.CharField || contextSolveStrategy.EmptyField || sp.CheckVariables())
             {
                 contextSolveStrategy.Result = "The fields contain empty or incorrect";
                 if (Request.IsAjaxRequest())
@@ -66,15 +69,14 @@ namespace TestEquatMvc.Controllers
                         //    contextSolveStrategy.TypeMethod = "Cramer";
                         //if (Action == "Gauss's method")
                         //    contextSolveStrategy.TypeMethod = "Gauss";
+
                     return PartialView("Result", contextSolveStrategy);
                 }
                 return PartialView("Result", contextSolveStrategy);
             }
 
             sp.InitMatrixs();
-
             matr = sp.GetMatrix();
-
             b = sp.GetVector();
 
             contextSolveStrategy.Solution.Vars = sp.Vars;
@@ -89,6 +91,11 @@ namespace TestEquatMvc.Controllers
                 contextSolveStrategy.Result = ex.Message;
             }
             return PartialView("Result", contextSolveStrategy);
+        }
+
+        public ActionResult ClearResult()
+        {
+            return PartialView("Result");
         }
 
     }
