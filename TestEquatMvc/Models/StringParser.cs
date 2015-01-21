@@ -245,7 +245,6 @@ namespace TestEquatMvc.Models
             }
             return flag;
         }
-
     }
 
 }

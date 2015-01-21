@@ -275,49 +275,30 @@ namespace TestEquatMvc.Models
         // Обратный ход метода Гаусса
         private void GaussBackwardStroke(int[] index)
         {
-            bool tmpZero = true;
-            double tmp_sum = 0;
             // перемещаемся по каждой строке снизу вверх
-            for (int i = size - 1; i >= 0; --i)
+            for (int i = size - 1; i >= 0; i--)
             {
-                //// 1) задаётся начальное значение элемента x
-                double x_i = vector[i];
+                double tmp_el = matrix[i, i];   //нормализация строки
+                if (tmp_el == 0)
+                {
+                    //нет решений или несовместна
+                    throw new GaussSolveNotFound("Система уравнений не имеет решений или несовместна");
+                }
 
-                //// 2) корректировка этого значения
-                //for (int j = i + 1; j < size; ++j) 
-                //{
-                    //    x_i -= results[index[j]] * matrix[i, index[j]];
-                //}
-                //results[index[i]] = x_i;
+                for (int j = i; j < size; j++)
+                {
+                    matrix[i, j] /= tmp_el;
+                }
+                vector[i] /= tmp_el;
 
-                //если выбираем ненулевое значение из вектора
-                if(i == size - 1)
-                    for (int j = 0; j < size; j++)
-                    {
-
-                    }
-
-                    for (int j = results.Length - 1; j >= 0; j--)
-                    {
-                        if (j == results.Length - 1)
-                        {
-                            for (int k = 0; k < matrix.GetLength(1); k++)
-                                if (matrix[i, k] != 0)
-                                {
-                                    tmpZero = false;
-                                    break;
-                                }
-                            if (tmpZero == true)
-                            {
-                                tmpZero = false;
-                                break;
-                            }
-                        }
-
-                        results[i] = (x_i - tmp_sum) / matrix[i, j];
-
-                        tmp_sum += results[i] * matrix[i, j];
-                    }
+                for (int j = i - 1; j >=0; j--)  //вычитаем нормализованную строку из остальных верхних
+                {
+                    tmp_el = matrix[j, i];
+                    for (int k = i; k < size; k++)   //вычитаем одну строку из другой
+                        matrix[j, k] -= matrix[i, k] * tmp_el;
+                    vector[j] -= vector[i] * tmp_el;
+                }
+                results = vector;
             }
         }
 
