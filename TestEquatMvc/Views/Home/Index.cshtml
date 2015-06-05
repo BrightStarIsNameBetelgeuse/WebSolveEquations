@@ -4,7 +4,10 @@
     ViewBag.Title = "Web Equations Solver";
 }
 
-<div class="title"><span class="red">Welcome</span> to the Web Solver Equations</div>
+<div class="title">
+    <span class="main-text">Welcome to the Web Solver Equations</span>
+</div>
+
 <h3>Enter equations</h3>
 <script src="@Url.Content("/Scripts/jquery.unobtrusive-ajax.min.js")" type="text/javascript"></script>
 
@@ -18,12 +21,12 @@
             <textarea id="names1" name="names" ></textarea>
             <br/>
 
-            <button type="submit" value="Cramer's method">Solve </button>
+            <button class="button-solve" type="submit" value="Cramer's method">Solve </button>
                    
     }
     
     <p class ="result">Output</p>
-    <div  class="result_box" id="results">    
+    <div  class="result-box" id="results">    
         
     </div> 
     @*@using (Ajax.BeginForm("ClearResult", new AjaxOptions

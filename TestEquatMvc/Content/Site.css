@@ -1,9 +1,8 @@
 ﻿body {
-    background:url(../Images/bg.gif) repeat #000000;
+    background:url(../Images/bg1.png) 0 0 repeat;
     padding:0; font-family:arial, sans-serif; font-size:12px;
     margin:0px auto auto auto;
     color:#36322b;
-    color: #333;
 	font-family: Tahoma, Geneva, sans-serif;
 	font-size: 20px;
 }
@@ -13,20 +12,27 @@ header, footer, nav, section {
 }
 
 #header{
+    background:url(../Images/header_equat.png);
+    opacity:0.2;
     width:821px;
     height:135px;
     margin:0px;
     padding:0px;
-    background:url(../Images/header_bg.gif) no-repeat center top;
 }
 
 #main_container{
-    width:821px;
+    /*width:821px;
     height:auto;
     margin:auto;
-    padding:0px;
+    padding:0px;*/
+    width:800px;
+    margin-left:auto;
+    margin-right:auto;
 }
-
+.shadow-container {
+    width:821px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+}
 /* Styles for basic forms
 -----------------------------------------------------------*/
 fieldset {
@@ -83,7 +89,8 @@ textarea {
     height:auto;
     clear:both;
     padding:25px 0 30px 0;
-    background-color:#e9e5e2;
+    background-color:#e0cbb4;
+    /*box-shadow: 0 0 10px rgba(0,0,0,0.5);*/
 }
 
 .clear{
@@ -104,6 +111,12 @@ textarea {
     padding: 10px 0 10px 10px;
 }
 
+span.main-text{
+    text-align:left;
+    font-weight:bold;
+    color:black;
+}
+
 span.red {
     font-weight: bold;
     color: #da5b23;
@@ -113,11 +126,13 @@ span.red {
     padding:30px 35px 0 35px;
 }
 
-.result_box{
-    width:496px;
-    height:202px;
-    background:url(/Images/welcome_box.gif) no-repeat center;
-    padding:0px;
+.result-box{
+    display:block;
+    width:300px;
+    height:150px;
+    border:5px solid #c1a383;
+    margin:20px;
+    padding:20px;
 }
 
 p{
@@ -137,7 +152,11 @@ p.result{
     width:821px;
     height:42px;
     margin:0px;
-    background:url(../Images/menu_bg.gif) no-repeat left;
+    background-color:#f4f4f4;
+    /*opacity:0.8;
+    border-bottom:2px solid black;
+    border-top:2px solid grey;*/
+
 }
 .menu ul{
     list-style:none;
@@ -153,25 +172,30 @@ p.result{
     border:none;
     padding:0 15px 0 15px;
     text-decoration:none;
-    color:#fff;
+    color:#000;
     line-height:42px;
     font-size:14px;
 }
-.menu ul li.selected a{
-    float:left;
-    height:42px;
-    border:none;
-    padding:0 15px 0 15px;
-    text-decoration:none;
-    color:#fff;
-    line-height:42px;
-    font-size:14px;
-    background:url(../Images/menu_bullet.gif) no-repeat bottom center;
-}
-.menu ul li a:hover{
-    background:url(../Images/menu_bullet.gif) no-repeat bottom center;
+.menu ul li.selected a, 
+.menu ul li a:hover {
+    background-color:#e0cbb4;
+    border-right:1px solid #c1a383;
 }
 
+.button-solve{
+    display:block;
+    padding:10px 15px;
+    margin-top:15px;
+    width:160px;
+    border:none;
+    cursor:pointer;
+    color:white;
+    background-color:#929090;
+}
+.button-solve:hover{
+    background-color:#bebdbd;
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+}
 /*----------New----------*/
 #my_menu {
     clear:both;
