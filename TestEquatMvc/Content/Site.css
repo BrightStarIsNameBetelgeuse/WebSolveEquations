@@ -7,6 +7,18 @@
 	font-size: 20px;
 }
 
+body img.bg{
+    min-height: 100%;
+    min-width: 100%;
+
+    width: 100%;
+    height: 100%;
+
+    position: fixed;
+    top: 0;
+    left :0;
+}
+
 header, footer, nav, section {
     display: block;
 }
@@ -21,13 +33,11 @@ header, footer, nav, section {
 }
 
 #main_container{
-    /*width:821px;
-    height:auto;
-    margin:auto;
-    padding:0px;*/
     width:800px;
     margin-left:auto;
     margin-right:auto;
+    position: relative;
+    background: url(../Images/header_equat.png) repeat;
 }
 .shadow-container {
     width:821px;
