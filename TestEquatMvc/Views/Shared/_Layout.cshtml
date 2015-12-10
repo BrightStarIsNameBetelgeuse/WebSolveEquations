@@ -8,14 +8,14 @@
     @Scripts.Render("~/bundles/modernizr")
     
     <script src="@Url.Content("/Scripts/jquery-1.7.1.min.js")" type="text/javascript"></script>
+    <script src="@Url.Content("/Scripts/Code/js.js")" type="text/javascript"></script>
     
 </head>
 <body>
-    <img class="bg" src="~/Images/bg_new.jpg" />
-    
-    <div class="start-btn-cnt">
-        <a class="start-btn-cnt__btn"></a>
+    <div class="site-welcome">
+        <img class="bg" src="~/Images/bg_new.jpg" />
     </div>
+
     @*<div id="main_container">
         <div class="shadow-container">
             <div class="center_content">
@@ -28,7 +28,9 @@
     </div>*@
     @RenderBody()
 
-   
+    <div class="gearbox">
+        <img src="~/Images/gear.svg" id="gear"/>
+    </div>
     @RenderSection("scripts", required: false)
 </body>
 </html>

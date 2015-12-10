@@ -7,7 +7,7 @@
 	font-size: 20px;
 }
 
-body img.bg{
+.welcome img.bg{
     min-height: 100%;
     min-width: 100%;
 
@@ -262,4 +262,15 @@ p.result{
     width: 940px;
     padding: 30px 0;
     background: url(../Images/content.png)
+}
+
+.gearbox{
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 200px;
+    height: 200px;
+}
+.gearbox img{
+
 }
