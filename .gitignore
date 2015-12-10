@@ -1,7 +1,8 @@
 TestEquatMvc.sln
 TestEquatMvc/bin/
 TestEquatMvc/obj/Debug/
-
+TestEquatMvc/TestEquatMvc.csproj
  .vs/
 Backup/
 UpgradeLog.htm
+UpgradeLog2.htm
