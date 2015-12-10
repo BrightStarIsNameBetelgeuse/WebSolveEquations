@@ -11,28 +11,22 @@
     
 </head>
 <body>
-    <img class="bg" src="~/Images/bg_new.jpg"/>
-    <div id="main_container">
-        <div class="shadow-container">
-        <div class="menu">
-        	    <ul>                                                                         
-        		    <li class="selected"><a href="#">Home</a></li>
-
-                    <li><a href="https:/www.google.com">About</a></li> 
-
-        	    </ul>
-        </div>
-        <div class="center_content">
-                <div class="center_left">
-                    @RenderBody() 
-                </div>
-
-                <div class="clear"></div> 
-        </div>
-        </div>
+    <img class="bg" src="~/Images/bg_new.jpg" />
+    
+    <div class="start-btn-cnt">
+        <a class="start-btn-cnt__btn"></a>
     </div>
-    
-    
+    @*<div id="main_container">
+        <div class="shadow-container">
+            <div class="center_content">
+               <div class="center_left">
+                   @RenderBody() 
+               </div>
+               <div class="clear"></div> 
+            </div>
+        </div>
+    </div>*@
+    @RenderBody()
 
    
     @RenderSection("scripts", required: false)
