@@ -14,24 +14,28 @@
 </head>
 <body>
     <div class="site-welcome">
+        <div class="header">
+            <h1>Welcome to my page!</h1>
+            <button class="more">Learn more</button>
+        </div>
         <img class="bg" src="~/Images/bg_new.jpg" />
     </div>
 
     @*<div id="main_container">
-        <div class="shadow-container">
-            <div class="center_content">
-               <div class="center_left">
-                   @RenderBody() 
-               </div>
-               <div class="clear"></div> 
+            <div class="shadow-container">
+                <div class="center_content">
+                   <div class="center_left">
+                       @RenderBody()
+                   </div>
+                   <div class="clear"></div>
+                </div>
             </div>
-        </div>
-    </div>*@
+        </div>*@
     @RenderBody()
 
-    <div class="gearbox">
-        <img src="~/Images/gear.svg" id="gear"/>
-    </div>
+    @*<div class="gearbox">
+        <img src="~/Images/gear.svg" id="gear" />
+    </div>*@
     @RenderSection("scripts", required: false)
 </body>
 </html>
